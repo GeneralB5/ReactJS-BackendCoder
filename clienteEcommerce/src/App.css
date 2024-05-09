@@ -69,6 +69,11 @@
 .arrowIcon{
   rotate: -90deg;
 }
+/* Cart icon */
+.cartIcon{
+  position: relative;
+  top: -10px;
+}
 /* footer */
 footer div{
   display: flex;

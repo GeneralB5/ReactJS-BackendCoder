@@ -1,7 +1,7 @@
 import HomeIcon from "@mui/icons-material/Home"
 import PersonIcon from '@mui/icons-material/Person';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import IconGeneratorCir from "./icons/icons";
+import IconGeneratorCir from "./icons/icons.jsx";
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import SearchBar from "./searchBar/searchBar"
 import { useContext, useEffect, useState } from "react"
@@ -19,9 +19,8 @@ function Layout({children}){
     const {isLogged} = useContext(loginContext)
     const {user} = useContext(userInfoContext)
     const {roles} = useContext(roleContext)
-    console.log(isLogged)
     const size = useScreenSize()
-    console.log(size.width)
+    
     window.addEventListener("scroll", () =>{
         if(pathname === "/"){
             setHeadClass("Head abajo")
@@ -51,9 +50,9 @@ return(
         </div>
         {size.width >390? 
         <div className="optionsContainer">
-            <Link to={`http://localhost:5173/productos`} ><IconGeneratorCir variableClass='DivIconModifBlue' icon={<HomeIcon />}  /></Link>
-            <Link to={user?"http://localhost:5173/user/cart":"http://localhost:5173/login" }><IconGeneratorCir variableClass='DivIconModifPink' icon={<ShoppingCartIcon />} /></Link>
-            <Link to={user?"http://localhost:5173/user/information":"http://localhost:5173/login" } ><IconGeneratorCir variableClass='DivIconModifWhite' icon={<PersonIcon />}/></Link>
+            <Link style={{textDecoration:'none'}} to={`http://localhost:5173/productos`} ><IconGeneratorCir variableClass='DivIconModifBlue' icon={<HomeIcon />}  /></Link>
+            <Link style={{textDecoration:'none'}} to={user?"http://localhost:5173/user/cart":"http://localhost:5173/login" }><IconGeneratorCir variableClass='DivIconModifPink' type={'cart'} icon={<ShoppingCartIcon />} /></Link>
+            <Link style={{textDecoration:'none'}}  to={user?"http://localhost:5173/user/information":"http://localhost:5173/login" } ><IconGeneratorCir variableClass='DivIconModifWhite' icon={<PersonIcon />}/></Link>
             {user != undefined? roles.includes(user.role)? <Link to={user?"http://localhost:5173/productos/create":"http://localhost:5173/login" } ><IconGeneratorCir variableClass='DivIconModifyellow' icon={<AddBoxIcon />}/></Link>
             :"":''}
         </div> 
