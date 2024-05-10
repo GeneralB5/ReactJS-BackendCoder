@@ -24,6 +24,7 @@ function UserInfo(){
             console.log(error)
         }
     }
+    console.log(user)
     if(!user){
         return(
             <div style={{

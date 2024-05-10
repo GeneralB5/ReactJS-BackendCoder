@@ -27,7 +27,7 @@ function Context({children}){
     const [cart,setCart] = useState(0)
     const roles =['admin','usuario_premium']
     useEffect(()=>{
-        setIsLogged(document.cookie.length > 0? true : false)
+        setIsLogged(document.cookie.match("isLogged") != null? true : false)
         setUser(isLogged ?()=> handleInfoUser() : '')
         setCart(isLogged ?()=>fetchCartdata(setCart) : '')
     },[document.cookie.length])
