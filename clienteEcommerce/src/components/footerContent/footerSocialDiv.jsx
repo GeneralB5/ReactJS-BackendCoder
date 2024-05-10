@@ -17,7 +17,7 @@ return(
             fontFamily:'system-ui'
         }}
         >Redes Sociales</h2>
-        <div style={{
+        <div className="divWrappedSocial" style={{
             display:'flex',
             flexDirection:"row",
             justifyContent:"space-around"

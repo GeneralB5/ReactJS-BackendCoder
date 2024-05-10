@@ -1,10 +1,14 @@
+import { useContext } from "react"
+import { handleResetCart } from "../../../functions/fetch"
 import addDotEveryThreeCharac from "../../../functions/moneyCounter"
 import {loadStripe} from '@stripe/stripe-js'
+import { userInfoContext } from "../../../context/context"
 function ResumenCompra({dineroTotal , cart}){
     const Total = JSON.stringify((dineroTotal /10) + dineroTotal)
     const addTotal =Total.split('.')
     const frontNumber = addDotEveryThreeCharac(JSON.parse(addTotal[0]))
-    const aditional = addTotal.length > 1? '.'+JSON.parse(addTotal[1]) : ''    
+    const aditional = addTotal.length > 1? ','+JSON.parse(addTotal[1]) : ''    
+    const {setCart} = useContext(userInfoContext)
     const handlePayment= async(e)=>{
         try {
             e.preventDefault()
@@ -75,9 +79,16 @@ function ResumenCompra({dineroTotal , cart}){
                 
             }}>
                 <h2 className="h2TotalPayment">{frontNumber+aditional}</h2>
+                <div className="DivButtonsResumen" >
                 <button onClick={handlePayment} style={{
                     width:200
                     }}>Continue Payment</button>
+                <button onClick={(e)=>{handleResetCart(e,setCart)}} style={{
+                    width:200,
+                    backgroundColor:'lightgray',
+                    color:'#573b8a'
+                    }} >Resetar el carrito</button>
+                    </div>
             </footer>
         
         </div>
