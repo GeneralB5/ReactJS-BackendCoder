@@ -2,9 +2,9 @@
 
 ## quiero decir que los comando para poder iniciar son:
 
-<h6> npm i </h6>
-<h6> cd clienteEcommerce </h6>
-<h6> npm run dev </h6>
+<h6> -- npm i </h6>
+<h6> -- cd clienteEcommerce </h6>
+<h6> -- npm run dev </h6>
 
 ## con eso vas a poder iniciarlo
 
@@ -22,3 +22,7 @@
 
 ### Mas alla de eso lo unico que me falta aclarar es el tema de que este sitio lo voy a tratar de actualizar lo maximo posible 
 ### Gracias por entender.
+
+# UPDATE
+
+### En el boton de logOut existe un fallo porque no quiero pushear hasta que se me corriga el proyecto.
