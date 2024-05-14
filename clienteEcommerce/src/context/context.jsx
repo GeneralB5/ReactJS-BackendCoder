@@ -13,10 +13,12 @@ function Context({children}){
                 credentials:"include",
                 headers:{"Content-Type":"application/json"}
             })
+            
             const dataJson = await data.json()
             setUser(dataJson.payload)
         } catch (error) {
             console.log(error)
+            setUser('')
         }
     }
 
@@ -24,12 +26,12 @@ function Context({children}){
     const [isLogged,setIsLogged] = useState(document.cookie.length > 0? true : false)
     const [user,setUser] = useState()
     const [prods,setProds] = useState(null)
-    const [cart,setCart] = useState(0)
+    const [cart,setCart] = useState([])
     const roles =['admin','usuario_premium']
     useEffect(()=>{
         setIsLogged(document.cookie.match("isLogged") != null? true : false)
-        setUser(isLogged ?()=> handleInfoUser() : '')
-        setCart(isLogged ?()=>fetchCartdata(setCart) : '')
+        setUser(isLogged ?async ()=> await handleInfoUser() : '')
+        setCart(isLogged ?()=>fetchCartdata(setCart) : [])
     },[document.cookie.length])
     return(
         <prodsContext.Provider value={{prods,setProds}}>

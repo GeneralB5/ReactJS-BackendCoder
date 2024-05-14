@@ -9,6 +9,8 @@ const fetchCartdata = async(setCart)=>{
 
     } catch (error) {
         console.log(error)
+        setCart('')
+        
     }
 }
 

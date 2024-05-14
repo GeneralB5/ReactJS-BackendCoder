@@ -8,6 +8,7 @@ import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import { IconPhoto } from "../components/MUI/SX.jsx"
 import UserPremium from "../components/userinfo/premiumUser/premiumUser.jsx"
 import DocsCreation from "../components/docFields/docFields.jsx"
+import DeleteUserButton from "../components/userinfo/button/deleteUserButton.jsx"
 function UserInfo(){
     const {roles} = useContext(roleContext)
     const {user,setUser} = useContext(userInfoContext)
@@ -24,8 +25,8 @@ function UserInfo(){
             console.log(error)
         }
     }
-    console.log(user)
-    if(!user){
+    
+    if(!user ){
         return(
             <div style={{
                 display:"flex",
@@ -46,7 +47,7 @@ function UserInfo(){
         alignItems:"center",
     }}>
         <div style={{marginBottom:30}} className="divUserInfo">
-            <div style={{display:"flex",flexDirection:"column"}} >
+            <div className="divContainerBackGroundAndProfile" style={{display:"flex",flexDirection:"column"}} >
                 <div className="backgroundImageProfile" >
                     <AddPhotoAlternateIcon style={{width:30,height:30}} />
                 </div>
@@ -62,22 +63,26 @@ function UserInfo(){
                     display:"flex",
                     justifyContent:"center",
                     alignItems:'center'
-                }}></div>            
+                }} ></div>            
             
                 <AddAPhotoIcon sx={IconPhoto} className="IconImage" style={{
                     width:60,
                     height:60,
-                    position:"relative",
-                    bottom:65
+                    position:"absolute",
+                    marginBottom:20
                     }} />
                 </div>    
             </div>
+            <div style={{display:'grid'}}>
             <div className="divInformation" >
                 <CardsInfo title={"Nombre"} info={user.first_name ? user.first_name : "Not defined"} />
                 <CardsInfo title={"Apellido"} info={user.last_name ? user.last_name : "Not defined"}/>
                 <CardsInfo title={"Email"} info={user.email ? user.email : "Not defined"}/>
                 <CardsInfo title={"Age"} info={user.age ? user.age : "Not defined"}/>
                 <CardsInfo classNa={roles.includes(user.role)?'premium': undefined} title={"Role"} info={user.role ? user.role : "Not defined"}/>
+                
+            </div>
+            <DeleteUserButton onClick={()=>{}} />
             </div>
         </div>
         <div className="divDocuments">
