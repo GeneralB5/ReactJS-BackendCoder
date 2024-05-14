@@ -29,9 +29,12 @@ function Context({children}){
     const [cart,setCart] = useState([])
     const roles =['admin','usuario_premium']
     useEffect(()=>{
+        if(!user || !cart){
+            console.log('data')
         setIsLogged(document.cookie.match("isLogged") != null? true : false)
         setUser(isLogged ?async ()=> await handleInfoUser() : '')
         setCart(isLogged ?()=>fetchCartdata(setCart) : [])
+    }
     },[document.cookie.length])
     return(
         <prodsContext.Provider value={{prods,setProds}}>

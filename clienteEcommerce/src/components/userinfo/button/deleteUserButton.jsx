@@ -1,17 +1,39 @@
 import PersonOffIcon from '@mui/icons-material/PersonOff';
-function DeleteUserButton({onClick}){
+import LogoutIcon from '@mui/icons-material/Logout';
+import { handleLogout } from '../../../functions/fetch';
+import { useContext } from 'react';
+import { userInfoContext } from '../../../context/context';
+function DivButtonsOut({onClickDelete}){
+    const {setUser,setCart} = useContext(userInfoContext)
+    const handleLogs = async(e,func)=>{
+        await func(e)
+        setUser({})
+        setCart([])
+        window.location.href = 'http://localhost:5173/login'
+        alert('solo funciona del todo si se usa el branch development por cambios que no pushee')
+    }
 return(
-    <div style={{display:"flex",justifyContent:'flex-end'}}>
-                {/* delete button  */}
-                <button onClick={{}} className="deleteUserButton" style={{width:50,height:50,borderRadius:'50%',margin:0,backgroundColor:'lightgray'}} >
+    <div className='DivButtonsDelete divUserInfo ' style={{height:100,marginTop:0}}>
+                <button className="deleteUserButton" onClick={(e)=>handleLogs(e,handleLogout)}>
+                    <LogoutIcon style={{
+                        color:'red',
+                        width:30,
+                        height:30,
+                        margin:'auto'
+                    }} />
+                    Log-out
+                </button>
+
+                <button  className="deleteUserButton" >
                     <PersonOffIcon style={{
                         color:'red',
                         width:30,
                         height:30,
                         margin:'auto'
                     }} />
+                    delete user
                 </button>
-            </div>
+    </div>
 )
 }
-export default DeleteUserButton
+export default DivButtonsOut

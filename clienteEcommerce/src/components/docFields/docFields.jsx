@@ -25,7 +25,7 @@ function DocsCreation({docName,docSendName}){
             borderRadius:10,
             margin:'20px auto',
             
-        }} onSubmit={handleFetch} enctype="multipart/form-data">
+        }} onSubmit={handleFetch} encType="multipart/form-data">
             <h2>{docName}</h2>
             <input type="file" name={docSendName} id={docName} />
             <input type="submit" value="Submit" />

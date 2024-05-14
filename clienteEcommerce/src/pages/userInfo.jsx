@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext} from "react"
 import CardsInfo from "../components/cards/userInfoCards.jsx"
 import ListOwnerCard from "../components/userinfo/userInfoOwner.jsx"
 import { roleContext, userInfoContext } from "../context/context.jsx"
@@ -8,7 +8,7 @@ import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import { IconPhoto } from "../components/MUI/SX.jsx"
 import UserPremium from "../components/userinfo/premiumUser/premiumUser.jsx"
 import DocsCreation from "../components/docFields/docFields.jsx"
-import DeleteUserButton from "../components/userinfo/button/deleteUserButton.jsx"
+import DivButtonsOut from "../components/userinfo/button/deleteUserButton.jsx"
 function UserInfo(){
     const {roles} = useContext(roleContext)
     const {user,setUser} = useContext(userInfoContext)
@@ -82,9 +82,9 @@ function UserInfo(){
                 <CardsInfo classNa={roles.includes(user.role)?'premium': undefined} title={"Role"} info={user.role ? user.role : "Not defined"}/>
                 
             </div>
-            <DeleteUserButton onClick={()=>{}} />
             </div>
         </div>
+        <DivButtonsOut />
         <div className="divDocuments">
             <DocsCreation docSendName={'identification'} docName={'identification'} />
             <DocsCreation docSendName={'comprobant_domic'} docName={'Comprobante de domicilio'} />

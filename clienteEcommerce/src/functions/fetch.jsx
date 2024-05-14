@@ -32,4 +32,20 @@ const handleResetCart= async(e,setCart)=>{
     }
 }
 
-export {fetchCartdata ,handleResetCart }
+const handleLogout = async(e)=>{
+    try {
+        e.preventDefault()
+        const data = await fetch('http://localhost:8080/api/session/logout',
+        {
+         method:"POST",
+         credentials: 'include',
+         headers:{"Content-Type":"application/json"},
+         
+        })
+        const dataJson = await data.json()
+        console.log(dataJson)
+    } catch (error) {
+        console.log(error)
+    }
+}
+export {fetchCartdata ,handleResetCart,handleLogout }
