@@ -32,6 +32,7 @@ useEffect(()=>{
     fetchData()
 },[cart])
 if(loading) return(<Loading />)
+    console.log(cartProds)
 if(cartProds.length == 0 || user == undefined){
     return(
         <div style={{

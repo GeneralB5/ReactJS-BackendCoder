@@ -24,15 +24,14 @@ function Context({children}){
 
     const [change,setChange]= useState(false)
     const [isLogged,setIsLogged] = useState(document.cookie.length > 0? true : false)
-    const [user,setUser] = useState()
+    const [user,setUser] = useState({})
     const [prods,setProds] = useState(null)
     const [cart,setCart] = useState([])
     const roles =['admin','usuario_premium']
     useEffect(()=>{
         if(!user || !cart){
-            console.log('data')
         setIsLogged(document.cookie.match("isLogged") != null? true : false)
-        setUser(isLogged ?async ()=> await handleInfoUser() : '')
+        setUser(isLogged ?async ()=> await handleInfoUser() : {})
         setCart(isLogged ?()=>fetchCartdata(setCart) : [])
     }
     },[document.cookie.length])

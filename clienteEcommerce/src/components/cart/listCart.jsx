@@ -1,9 +1,8 @@
 import Product from "./product/product"
 function ListCart({products}){
-    console.log(products)
 return(
     <div className="divListCart">
-        {products.map((product)=> <Product product={product} />)}
+        {products.map((product)=> <Product key={product._id} product={product} />)}
     </div>
 )
 }

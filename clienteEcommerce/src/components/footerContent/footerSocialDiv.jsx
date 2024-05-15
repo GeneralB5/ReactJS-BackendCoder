@@ -20,7 +20,8 @@ return(
         <div className="divWrappedSocial" style={{
             display:'flex',
             flexDirection:"row",
-            justifyContent:"space-around"
+            justifyContent:"space-around",
+            width:'auto'
         }}>
             <IconGeneratorCir style={{width:'3vw',height:'3vw'}} variableClass={'iconFooter'} icon={<InstagramIcon style={{width:'clamp(1em, 4vw, 3em)',height:'clamp(1em, 4vw, 3em)'}} />}/>
             <IconGeneratorCir style={{width:'3vw',height:'3vw'}} variableClass={'iconFooter'} icon={<XIcon style={{width:'clamp(1em, 4vw, 3em)',height:'clamp(1em, 4vw, 3em)'}} />}/>

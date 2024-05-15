@@ -35,6 +35,7 @@ function Layout({children}){
     useEffect(()=>{
         setHeadClass(pathname=="/"? "Head":"Head normal" )
     },[pathname])
+    console.log()
 return(
 <>
     <header style={{
@@ -51,9 +52,9 @@ return(
         {size.width >390? 
         <div className="optionsContainer">
             <Link style={{textDecoration:'none'}} to={`http://localhost:5173/productos`} ><IconGeneratorCir variableClass='DivIconModifBlue' icon={<HomeIcon />}  /></Link>
-            <Link style={{textDecoration:'none'}} to={user?"http://localhost:5173/user/cart":"http://localhost:5173/login" }><IconGeneratorCir variableClass='DivIconModifPink' type={'cart'} icon={<ShoppingCartIcon />} /></Link>
-            <Link style={{textDecoration:'none'}}  to={user?"http://localhost:5173/user/information":"http://localhost:5173/login" } ><IconGeneratorCir variableClass='DivIconModifWhite' icon={<PersonIcon />}/></Link>
-            {user != undefined? roles.includes(user.role)? <Link to={user?"http://localhost:5173/productos/create":"http://localhost:5173/login" } ><IconGeneratorCir variableClass='DivIconModifyellow' icon={<AddBoxIcon />}/></Link>
+            <Link style={{textDecoration:'none'}} to={Object.entries(user).length > 0 ?"http://localhost:5173/user/cart":"http://localhost:5173/login" }><IconGeneratorCir variableClass='DivIconModifPink' type={'cart'} icon={<ShoppingCartIcon />} /></Link>
+            <Link style={{textDecoration:'none'}}  to={Object.entries(user).length > 0 ?"http://localhost:5173/user/information":"http://localhost:5173/login" } ><IconGeneratorCir variableClass='DivIconModifWhite' icon={<PersonIcon />}/></Link>
+            {user != undefined? roles.includes(user.role)? <Link to={Object.entries(user).length > 0?"http://localhost:5173/productos/create":"http://localhost:5173/login" } ><IconGeneratorCir variableClass='DivIconModifyellow' icon={<AddBoxIcon />}/></Link>
             :"":''}
         </div> 
         : 

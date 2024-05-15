@@ -9,9 +9,9 @@ function ItemsCounter({}) {
     useEffect(()=>{
         setCount(cartCounter(cart))
     },[change])
-    
+    console.log(cart)
     return(
-        <div  style={count>0?{
+        <div  style={count > 0?{
             width:20,
             height:20,
             borderRadius:'50%',

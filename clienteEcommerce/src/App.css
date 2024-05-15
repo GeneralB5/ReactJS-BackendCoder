@@ -825,6 +825,7 @@ filter: drop-shadow(0px 1px 2px #a19d9d);
 }
 .FormSendDocuments h2{
  font-size: 20px;
+ text-align: center;
 }
 .FormSendDocuments input[type='file']{
   max-width: 190px;
@@ -1363,7 +1364,7 @@ filter: drop-shadow(0px 1px 2px #a19d9d);
   width: 520px;
   height:600px;
   box-shadow:rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  border-radius:15px;
+  border-radius:10px;
 }
 @media (max-width:970px){
   .DivButtonsResumen{

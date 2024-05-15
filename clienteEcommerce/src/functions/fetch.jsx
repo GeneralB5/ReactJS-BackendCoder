@@ -32,6 +32,25 @@ const handleResetCart= async(e,setCart)=>{
     }
 }
 
+const handlePullProd= async(e,Pid)=>{
+    try {
+        e.preventDefault()
+        const send = JSON.stringify({Pid})
+        const data = await fetch('http://localhost:8080/api/cart/userCart/pullProduct',
+        {
+         method:"DELETE",
+         credentials: 'include',
+         headers:{"Content-Type":"application/json"},
+         body:send
+        })
+        if(!data) throw new Error
+        const dataJson = await data.json()
+        return dataJson? true : false
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 const handleLogout = async(e)=>{
     try {
         e.preventDefault()
@@ -48,4 +67,4 @@ const handleLogout = async(e)=>{
         console.log(error)
     }
 }
-export {fetchCartdata ,handleResetCart,handleLogout }
+export {fetchCartdata ,handleResetCart,handleLogout,handlePullProd }
