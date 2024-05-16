@@ -1,9 +1,11 @@
 import { useContext } from "react"
 import { loginContext, userInfoContext } from "../context/context.jsx"
+import { useNavigate } from "react-router-dom"
 
 function Login_singin(){
     const {setIsLogged} = useContext(loginContext)    
     const {setUser} = useContext(userInfoContext)    
+    let navigate = useNavigate()
     const handleFunciCreate= async (e)=>{
         e.preventDefault()
         const form = e.target
@@ -46,8 +48,8 @@ function Login_singin(){
          })
         const dataJson = await data.json()
         setUser(dataJson.payload) 
-        setIsLogged(document.cookie.length > 0? true : false)
-        
+        setIsLogged(document.cookie.match("isLogged") != null? true : false)
+        navigate("/productos")
     }
 return(
     <>

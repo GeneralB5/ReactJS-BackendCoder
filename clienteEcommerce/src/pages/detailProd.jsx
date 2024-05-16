@@ -18,7 +18,6 @@ function DetailProd(){
         const formJson = Object.fromEntries(formData.entries())
         const quant = parseInt(formJson.Select)
         const send = JSON.stringify({"quant":quant})
-        console.log(prod._id)
         if(!prod._id) return alert("Not found")
         const data = await fetch(`http://localhost:8080/api/cart/userCart/products/${prod._id}`
         ,{
@@ -28,8 +27,9 @@ function DetailProd(){
             body:send
         })
         if(!data) return;
-        updateCounter(prod,cart,setCart,quant,'sum')
-        setChange(!change)
+        await updateCounter(prod,cart,setCart,quant,'sum')
+        if(updateCounter) setChange(!change)
+        
         
     }
      const {Pid} = useParams()

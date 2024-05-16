@@ -16,6 +16,7 @@ const handleTotal = ()=>{
 }
 
 const {user,cart} = useContext(userInfoContext)
+
 useEffect(()=>{
     const fetchData = async()=>{
         const data = await fetch(`http://localhost:8080/api/cart/userCart`
@@ -30,10 +31,11 @@ useEffect(()=>{
          setLoading(false)
     }
     fetchData()
-},[cart])
+},[cart.length])
+
 if(loading) return(<Loading />)
     console.log(cartProds)
-if(cartProds.length == 0 || user == undefined){
+if(cart.length == 0||cartProds.length == 0 || user == undefined){
     return(
         <div style={{
             display:"flex",

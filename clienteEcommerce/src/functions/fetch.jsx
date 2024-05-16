@@ -10,7 +10,6 @@ const fetchCartdata = async(setCart)=>{
     } catch (error) {
         console.log(error)
         setCart('')
-        
     }
 }
 
@@ -32,9 +31,8 @@ const handleResetCart= async(e,setCart)=>{
     }
 }
 
-const handlePullProd= async(e,Pid)=>{
+const handlePullProd= async(Pid)=>{
     try {
-        e.preventDefault()
         const send = JSON.stringify({Pid})
         const data = await fetch('http://localhost:8080/api/cart/userCart/pullProduct',
         {
@@ -45,7 +43,7 @@ const handlePullProd= async(e,Pid)=>{
         })
         if(!data) throw new Error
         const dataJson = await data.json()
-        return dataJson? true : false
+        return dataJson
     } catch (error) {
         console.log(error)
     }

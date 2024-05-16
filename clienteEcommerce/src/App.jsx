@@ -30,6 +30,7 @@ function App() {
           <Route path='/user/cart' element={<CartPage />} />
           <Route path='/user/cart/payment/:total' element={<Payment />} />
           <Route path='/user/cart/payment-succesful' element={<SuccesPayment />} />
+          <Route path='*' element={'Error'} />
         </Routes>
         </Layout>
        </Context>

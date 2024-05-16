@@ -8,10 +8,11 @@ function cartCounter(cart){
     })
     return quant
 }
+
 const updateCounter = (prod,cart,setCart,quant,type) => {
     const {_id} = prod
     const search = cart.find( prods => prods._id == _id)
-    console.log(search)
+    
     if(cart.length == 0 || search == undefined ){
         return fetchCartdata(setCart)
     }

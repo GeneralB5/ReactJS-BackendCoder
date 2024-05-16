@@ -6,13 +6,19 @@ import { userInfoContext } from "../../../context/context.jsx";
 function Product({product}){
     const {cart,setCart,change,setChange} = useContext(userInfoContext)
     const SrcSource = product.thumbnail.split('.').length > 1? product.thumbnail : undefined;
+
     const handlePull = async(e, Pid)=>{
-        await handlePullProd(e,product._id)
-        const index = cart.findIndex((element) => element._id == Pid)
-        const newCart = cart.splice(index)
-        setCart(newCart)
+        e.preventDefault()
+        await handlePullProd(product._id)
+
+        const cartCopy = cart
+        const index = cartCopy.findIndex((element) => element._id == Pid)
+        const newCart = cartCopy.splice(index,1)
+        console.log(cartCopy)
+        setCart(cartCopy)
         setChange(!change)
     }
+
     return(
         <div className="productDiv" >
             <picture>

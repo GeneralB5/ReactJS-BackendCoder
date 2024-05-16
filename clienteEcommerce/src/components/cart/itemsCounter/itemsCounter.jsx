@@ -7,9 +7,9 @@ function ItemsCounter({}) {
     const {cart,change} = useContext(userInfoContext)
     
     useEffect(()=>{
+        console.log(cart)
         setCount(cartCounter(cart))
     },[change])
-    console.log(cart)
     return(
         <div  style={count > 0?{
             width:20,

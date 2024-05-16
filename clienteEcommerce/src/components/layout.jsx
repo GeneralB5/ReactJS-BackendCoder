@@ -35,7 +35,6 @@ function Layout({children}){
     useEffect(()=>{
         setHeadClass(pathname=="/"? "Head":"Head normal" )
     },[pathname])
-    console.log()
 return(
 <>
     <header style={{
