@@ -65,4 +65,26 @@ const handleLogout = async(e)=>{
         console.log(error)
     }
 }
-export {fetchCartdata ,handleResetCart,handleLogout,handlePullProd }
+
+const handleProfilePic = async(e)=>{
+    try {
+        e.preventDefault()
+        const inputFile = e.target
+        const formElement = document.createElement("form");
+        formElement.appendChild(inputFile)
+        console.log(formElement)
+        const formData = new FormData(formElement)
+        const data = await fetch('http://localhost:8080/api/session/picture',
+        {
+         method:"POST",
+         credentials: 'include',
+         body:formData
+        })
+        if(!data) throw new Error
+        const dataJson = data.json()
+        return dataJson.payload
+    } catch (error) {
+        console.log(error)
+    }
+}
+export {fetchCartdata ,handleResetCart,handleLogout,handlePullProd,handleProfilePic}

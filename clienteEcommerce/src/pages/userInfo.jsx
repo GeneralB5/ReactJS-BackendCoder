@@ -9,6 +9,7 @@ import { IconPhoto } from "../components/MUI/SX.jsx"
 import UserPremium from "../components/userinfo/premiumUser/premiumUser.jsx"
 import DocsCreation from "../components/docFields/docFields.jsx"
 import DivButtonsOut from "../components/userinfo/button/deleteUserButton.jsx"
+import { handleProfilePic } from "../functions/fetch.jsx"
 function UserInfo(){
     const {roles} = useContext(roleContext)
     const {user,setUser} = useContext(userInfoContext)
@@ -25,6 +26,12 @@ function UserInfo(){
             console.log(error)
         }
     }
+    const handlePrueba = ()=>{
+        const file = document.getElementById("FILE")
+        if(!file) return ''
+        file.click()
+    }
+    
     
     if(!user ){
         return(
@@ -51,7 +58,7 @@ function UserInfo(){
                 <div className="backgroundImageProfile" >
                     <AddPhotoAlternateIcon style={{width:30,height:30}} />
                 </div>
-            <div style={{display:"flex",flexDirection:"column"}} className="divImageInfo" >
+            <form onClick={handlePrueba} style={{display:"flex",flexDirection:"column",cursor:'pointer'}} className="divImageInfo" id="FORM" >
                 <div className="divImageInfoInsider"   style={{
                     width:170,
                     height:170,
@@ -64,14 +71,14 @@ function UserInfo(){
                     justifyContent:"center",
                     alignItems:'center'
                 }} ></div>            
-            
+                <input onChange={(e)=>handleProfilePic(e)} type="file" name="profile" id="FILE" style={{display:"none"}} />
                 <AddAPhotoIcon sx={IconPhoto} className="IconImage" style={{
                     width:60,
                     height:60,
                     position:"absolute",
                     marginBottom:20
                     }} />
-                </div>    
+            </form>    
             </div>
             <div style={{display:'grid'}}>
             <div className="divInformation" >
