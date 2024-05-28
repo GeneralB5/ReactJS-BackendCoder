@@ -10,7 +10,6 @@ import UserPremium from "../components/userinfo/premiumUser/premiumUser.jsx"
 import DocsCreation from "../components/docFields/docFields.jsx"
 import DivButtonsOut from "../components/userinfo/button/deleteUserButton.jsx"
 import { handleProfilePic } from "../functions/fetch.jsx"
-
 function UserInfo(){
     const {roles} = useContext(roleContext)
     const {user,setUser} = useContext(userInfoContext)
@@ -48,10 +47,26 @@ function UserInfo(){
     }
     useEffect(()=>{
         const importImage = async()=>{
-            const path = user.thumbnail
-            const URLProfile = path.split("BackendCoder")[1]
-            const img =  `../../../../BackendCoder/${URLProfile}`
-            setProfileImg(img)
+             const path = user.thumbnail
+             let URLProfile = path.split("BackendCoder\\")[1]
+             URLProfile = URLProfile.split(".")
+             const img =  `../../../../BackendCoder`
+             const arrysplited = URLProfile[0].split("\\")
+
+             const mimeType = URLProfile[1]
+             let imgImport
+             switch(mimeType){
+                case "png":
+                 imgImport = await import(`../../../../BackendCoder/${arrysplited[0]}/${arrysplited[1]}/${arrysplited[2]}/${arrysplited[3]}.png`)
+                break
+                case "jpg":
+                imgImport = await import(`../../../../BackendCoder/${arrysplited[0]}/${arrysplited[1]}/${arrysplited[2]}/${arrysplited[3]}.jpg`)
+                break
+                default:
+                imgImport = "https://static.vecteezy.com/system/resources/previews/007/409/979/non_2x/people-icon-design-avatar-icon-person-icons-people-icons-are-set-in-trendy-flat-style-user-icon-set-vector.jpg"
+                break
+            }
+            setProfileImg(imgImport.default)
         }
         importImage()
     },[])
@@ -68,7 +83,7 @@ function UserInfo(){
                     <AddPhotoAlternateIcon style={{width:30,height:30}} />
                 </div>
             <form onClick={handlePrueba} style={{display:"flex",flexDirection:"column",cursor:'pointer'}} className="divImageInfo" id="FORM" >
-                <div   className="divImageInfoInsider"    style={{
+                <img src={ProfileImg}   className="divImageInfoInsider"    style={{
                     width:170,
                     height:190,
                     borderRadius:'50%',
@@ -79,7 +94,9 @@ function UserInfo(){
                     display:"flex",
                     justifyContent:"center",
                     alignItems:'center',
-                    backgroundImage:`url(${ProfileImg})`}}></div>            
+                    backgroundImage:`url(${ProfileImg})`,
+                    boxShadow:"rgba(0, 0, 0, 0.24) 0px 3px 8px"
+                    }}/>
                 <input onChange={(e)=>handleProfilePic(e)} type="file" name="profile" id="FILE" style={{display:"none"}} />
                 <AddAPhotoIcon sx={IconPhoto} className="IconImage" style={{
                     width:60,
