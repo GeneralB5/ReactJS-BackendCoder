@@ -87,4 +87,17 @@ const handleProfilePic = async(e)=>{
         console.log(error)
     }
 }
-export {fetchCartdata ,handleResetCart,handleLogout,handlePullProd,handleProfilePic}
+const fetchDyinamic = async(setState,URL,typeJSON={method:'GET',credentials:"include",headers:new Headers()})=>{
+    try {
+        
+        if(!URL)throw new Error(`There is not an URL valid --> ${URL}`)
+        const data= await fetch(URL,typeJSON)
+        if(!data) throw new Error(`There is not data valid or an Error --> ${data}`)
+        const dataJson = await data.json()
+        setState(dataJson.payload ? dataJson.payload : dataJson)
+    }catch (error) {
+        console.log(error)
+        setState('')
+    }
+}
+export {fetchCartdata ,handleResetCart,handleLogout,handlePullProd,handleProfilePic,fetchDyinamic}
