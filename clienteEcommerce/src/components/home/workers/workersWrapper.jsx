@@ -28,8 +28,11 @@ function WorkingPeopleWrapped({}){
     ]
     
     return(
-        <div className="WorkingPeople">
+        <div style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",paddingTop:20}} >
+            <h2 style={{fontSize:40}} >People in our company</h2>
+            <div  className="WorkingPeople">
             {workersArry.map(worker=><WorkersCard key={worker.position} worker={worker}/> )}
+            </div>
         </div>
     )
 }

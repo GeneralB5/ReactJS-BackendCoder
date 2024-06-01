@@ -265,6 +265,22 @@ justify-content: space-around;
   height: 500px;
   width: 270px;
   padding: 10px;
+  box-shadow: 
+  rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, 
+  rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, 
+  rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+.phoneBorder::before{
+  content: "";
+  position: absolute;
+  margin-left: 100px;
+  margin-top: 50px;
+  height: 100px;
+  width: 185px;
+  background-color: #353333;
+  z-index: -1;
+  margin-left: 100px;
+  border-radius: 15px;
 }
 .phoneBorder section{
     height: 100%;
@@ -336,6 +352,7 @@ justify-content: space-around;
   justify-content: space-around;
   align-items: center;
   height: 500px;
+  width: 100%;
 }
  .divInsideWorkers{
    background-color: #d3d3d3;
