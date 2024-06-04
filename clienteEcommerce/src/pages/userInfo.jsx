@@ -70,6 +70,8 @@ function UserInfo(){
         }
         importImage()
     },[])
+    let role;
+    if(user.role) role = user.role.replace("_"," ")
     return(
     <div style={{
         display:'flex',
@@ -112,7 +114,7 @@ function UserInfo(){
                 <CardsInfo title={"Apellido"} info={user.last_name ? user.last_name : "Not defined"}/>
                 <CardsInfo title={"Email"} info={user.email ? user.email : "Not defined"}/>
                 <CardsInfo title={"Age"} info={user.age ? user.age : "Not defined"}/>
-                <CardsInfo classNa={roles.includes(user.role)?'premium': undefined} title={"Role"} info={user.role ? user.role : "Not defined"}/>
+                <CardsInfo classNa={roles.includes(user.role)?'premium': undefined} title={"Role"} info={user.role ? role : "Not defined"}/>
                 
             </div>
             </div>

@@ -48,7 +48,19 @@ const handlePullProd= async(Pid)=>{
         console.log(error)
     }
 }
-
+const handleDeleteUser = async(e)=>{
+    try {
+        e.preventDefault()
+        const data = await fetch('http://localhost:8080/api/session/deleteUser',
+        {
+         method:"DELETE",
+         credentials: 'include',
+        })
+        const dataJson = await data.json()
+    } catch (error) {
+        console.log(error)
+    }
+}
 const handleLogout = async(e)=>{
     try {
         e.preventDefault()
@@ -87,17 +99,18 @@ const handleProfilePic = async(e)=>{
         console.log(error)
     }
 }
-const fetchDyinamic = async(setState,URL,typeJSON={method:'GET',credentials:"include",headers:new Headers()})=>{
+const fetchDyinamic = async(URL,setState = null,typeJSON={method:'GET',credentials:"include",headers:new Headers()})=>{
     try {
         
         if(!URL)throw new Error(`There is not an URL valid --> ${URL}`)
         const data= await fetch(URL,typeJSON)
         if(!data) throw new Error(`There is not data valid or an Error --> ${data}`)
         const dataJson = await data.json()
-        setState(dataJson.payload ? dataJson.payload : dataJson)
+        if(setState != null) setState(dataJson.payload ? dataJson.payload : dataJson)
     }catch (error) {
         console.log(error)
         setState('')
     }
 }
-export {fetchCartdata ,handleResetCart,handleLogout,handlePullProd,handleProfilePic,fetchDyinamic}
+
+export {fetchCartdata ,handleResetCart,handleLogout,handlePullProd,handleProfilePic,fetchDyinamic,handleDeleteUser}

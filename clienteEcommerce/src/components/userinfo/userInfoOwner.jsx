@@ -5,15 +5,14 @@ function ListOwnerCard({ownerProd}){
 const [prods,setProds] = useState([])
  useEffect(()=>{
  const fetchData = async()=>{
-     const dataFetch = await fetch(`http:localhost:8080/api/productos/get?query={owner:${ownerProd.email}}`,{
+     const dataFetch = await fetch(`http://localhost:8080/api/productos/owner/products`,{
          method:"GET",
          credentials: 'include',
-         headers:{"Content-Type":"application/json",}
      })
      const dataJson = await dataFetch.json()
      setProds(dataJson.payload)
  }
- //fetchData()
+fetchData()
  console.log(prods)
  },[ownerProd])
 
@@ -31,7 +30,7 @@ if(!Array.isArray(prods)){
     )
 }
 return(
-    <div className="divListOwnedProducts" >
+    <div style={{marginBottom:10}} className="divListOwnedProducts" >
         <h2 >Productos que posee</h2>
         <div className="DivCategoryListCart">
         <p>Img</p>
