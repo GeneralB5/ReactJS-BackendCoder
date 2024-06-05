@@ -1,6 +1,6 @@
 <h1>Hola este es mi front-end</h1>
 
-## quiero decir que los comando para poder iniciar son:
+##  los comando para poder iniciar son:
 
 <h6> -- npm i </h6>
 <h6> -- cd clienteEcommerce </h6>
@@ -26,3 +26,6 @@
 # UPDATE
 
 ### En el boton de logOut existe un fallo porque no quiero pushear hasta que se me corriga el proyecto.
+
+# Final update
+### Este repositorio solo funciona con el repositorio de Backend-coder

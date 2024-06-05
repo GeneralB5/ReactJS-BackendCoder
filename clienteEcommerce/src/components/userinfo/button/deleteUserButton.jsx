@@ -4,7 +4,7 @@ import { fetchDyinamic, handleDeleteUser, handleLogout } from '../../../function
 import { useContext } from 'react';
 import { userInfoContext } from '../../../context/context';
 function DivButtonsOut(){
-    const {setUser,setCart} = useContext(userInfoContext)
+    const {user,setUser,setCart} = useContext(userInfoContext)
     const handleLogs = async(e,func)=>{
         await func(e)
         setUser({})
@@ -14,7 +14,7 @@ function DivButtonsOut(){
     }
 return(
     <div className='DivButtonsDelete divUserInfo ' style={{marginTop:0}}>
-                <button onClick={(e)=>handleLogs(e,fetchDyinamic("http://localhost:8080/api/session/premiumUser",null,{method:"POST",credentials:"include"}))} style={{color:"red"}} className="deleteUserButton">Cancel subscription</button>
+                {user.role == "usuario_premium" ?<button onClick={(e)=>handleLogs(e,fetchDyinamic("http://localhost:8080/api/session/premiumUser",null,{method:"POST",credentials:"include"}))} style={{color:"red"}} className="deleteUserButton">Cancel subscription</button> : ""}
                 <button className="deleteUserButton" onClick={(e)=>handleLogs(e,handleLogout)}>
                     <LogoutIcon style={{
                         color:'red',
